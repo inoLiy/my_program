@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <!-- 头部条 -->
+    <div class="regist_header">
+        <div class="wrap">
+            <!-- 头部左边logo -->
+            <a href="http://www.yhd.com" class="logo">
+                <img src="https://passport.yhd.com/front-passport/passport/images/loginlogo.jpg" height="55" alt="1号店">
+            </a>
+            <!-- 头部右边 -->
+            <div class="regist_header_right">
+                <!--<a href="#" class="english_edition" id="edition" style="display:none">English</a>-->
+                <div class="help_wrap">
+                    <!-- 帮助中心 -->
+                    <a class="hd_menu" href=""><s class="help_ico"></s>帮助中心</a>
+                    <div class="hd_menu_list">
+                        <ul>
+                            <li><a href="http://home.yhd.com/order/toOrderList.do">包裹跟踪</a></li>
+                            <li><a href="http://cms.yhd.com/cms/view.do?topicId=12">常见问题</a></li>
+                            <li><a href="http://rma.yhd.com/return/returnApplyList.do">在线退换货</a></li>
+                            <li><a href="http://cms.yhd.com/cms/view.do?topicId=43">在线投诉</a></li>
+                            <!--
+                                <li><a href="http://www.yhd.com/deliveryinfo/deliveryInfo.do">配送范围</a></li>
+                                -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- 登录 -->
+                <span class="fr">
+                    您好，欢迎光临1号店！
+                    <a href="/passport/login_input.do" class="blue_link">
+                        请登录
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 登录 -->
+    <div class="login_wrap">
+        <div class="wrap">
+            <!-- 右边登录框主体 -->
+            <div class="main_login_wrap">
+                <div class="login">
+                    <p id="error_tips" class="error_tips" style="display:none">您填写的账户名不存在请核对后重新填写</p>
+                    <!-- 标题 -->
+                    <div class="bw">
+                        <h3>1号店用户登录</h3>
+                        <a href="" class="regist_new">注册新账号</a>
+                    </div>
+                    <!-- 账号 -->
+                    <div class="login_form">
+                        <!-- 账号框和密码框 -->
+
+
+
+                        <div class="form_item_wrap">
+                            <!-- 用户 -->
+                            <div class="form_item">
+                                <label class="user_ico">&nbsp;</label>
+                                <input type="text" style="outline: none;" value="" placeholder="用户名">
+                            </div>
+                            <!-- 密码 -->
+                            <div class="form_item">
+                                <label class="paswd_ico">&nbsp;</label>
+                                <input type="password" placeholder="密码 " style="outline: none;">
+                            </div>
+                            <!-- 自动登录 -->
+                            <div class="auto_login zdlog">
+                                <p class="zdlog">
+
+                                    <a href="#" class="uncheck_agreement">自动登录</a>
+                                    <!-- 勾选框 -->
+                                    <input type="hidden">
+                                    <span class="auto_tips" style="display: none;">请勿在公用电脑上启用</span>
+                                </p>
+                                <!-- 确认登录 -->
+                                <p class="service_agreement">点击登录，表示您同意1号店
+                                    <a href="" class="blue_link" target="_blank">《服务协议及隐私声明》</a>
+                                </p>
+                                <a href="" target="_blank" class="forget_pswd" tabindex="-1">忘记密码？</a>
+                            </div>
+                            <!-- 登录按钮 -->
+                            <button type="button" class="login_btn">登录</button>
+
+                        </div>
+
+                        <div class="joint_landing_wrap">
+                            <p>更多合作网站账号登录</p>
+                            <div class="clearfix">
+                                <ul class="account_list clearfix">
+                                    <li>
+                                        <a href="" target="_blank" class="iconfont qq" title="QQ"></a>
+                                    </li>
+                                    <li>
+                                        <a href="" target="_blank" class="iconfont jingdong" title="京东"></a>
+                                    </li>
+                                    <li>
+                                        <a href="" target="_blank" class="iconfont weixin" title="微信"></a>
+                                    </li>
+                                    <li>
+                                        <a href="" target="_blank" class="iconfont sina" title="新浪微博"></a>
+                                    </li>
+                                </ul>
+                                <a href="javascript:void(0);" class="unfold" title="展开">更多合作网站<i></i></a>
+                            </div>
+                            <!-- <ul class="more_landing clearfix">
+                                <li style="display: none;"><a href="https://passport.yhd.com/alipay/login.do"
+                                        target="_blank"><i class="iconfont alipay"></i>支付宝</a></li>
+                                <li style="display: none;"><a href="https://passport.yhd.com/netease/login.do"
+                                        target="_blank"><i class="iconfont wangyi"></i>网易</a></li>
+                                <li style="display: none;"><a href="https://passport.yhd.com/baidu/login.do"
+                                        target="_blank"><i class="iconfont baidu"></i>百度</a></li>
+                                <li style="display: none;"><a href="https://passport.yhd.com/renren/login.do"
+                                        target="_blank"><i class="iconfont renren"></i>人人网</a></li>
+                                <li style="display: none;"><a href="https://passport.yhd.com/wanlitong/login.do"
+                                        target="_blank"><i class="iconfont pingan"></i>平安万里通</a></li>
+                                <li style="display: none;"><a href="https://passport.yhd.com/mogujie/login.do"
+                                        target="_blank"><i class="iconfont mogujie"></i>蘑菇街</a></li>
+                            </ul> -->
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+                
+            <!-- 左边图标 -->
+            <div class="main_left_banner">
+                <a id="imgLink" target="_blank">
+                    <img src="https://passport.yhd.com/front-passport/passport/images/login_pic.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
