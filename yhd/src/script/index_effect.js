@@ -1,5 +1,5 @@
 require(['config'], function () {
-    require(['jquery'], function () {
+    require(['jquery','jquery.lazyload'], function () {
         class index_effect {
             constructor() {
                 this.$shangpinlou = $('.shangpinlou');
