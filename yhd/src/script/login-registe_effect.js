@@ -30,7 +30,7 @@ require(['config'], function () {
                 let _this = this;
                 let phone_yz = false;
                 let s1 = 0, s2 = 0, s3 = 0, sum = 0;
-                console.log(this.$regist_tips_keywords.length)
+               
                 this.$same_input.on('focus', function () {
                     let len = _this.$same_label.eq($(this).index('.same_input')).html().length;
                     _this.$same_label.eq($(this).index('.same_input')).animate({

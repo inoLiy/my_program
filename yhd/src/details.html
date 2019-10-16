@@ -146,9 +146,8 @@
                 <!-- 大图 开始 -->
                 <div class="proImg_border">
                     <div class="proImg">
-
-                        <img id="J_prodImg" width="360" height="360" alt="雷蛇蝰蛇标准版 右手工程学游戏鼠标" src="img/bp.jpg">
-                        <div class="zoomCursor" style="display: none; left: 112.4px; top: 210px;"></div>
+                        <!-- <img id="J_prodImg" width="360" height="360" alt="雷蛇蝰蛇标准版 右手工程学游戏鼠标" src="img/bp.jpg"> -->
+                        <div class="zoomCursor" style="display: block; left: 112.4px; top: 210px;"></div>
                         <div class="mask"></div>
                     </div>
                 </div>
@@ -161,22 +160,13 @@
                             <div class="hideBox">
                                 <div class="mBox clearfix">
                                     <!-- 单个小图 -->
-                                    <b class="">
-                                        <img width="50" height="50" class="detail_main_pic_class"
-                                            alt="雷蛇(Razer) 蝰蛇标准版 鼠标 有线鼠标 游戏鼠标 人体工程学 电竞 黑色 6400DPI lol吃鸡神器cf"
-                                            src="img/sp.jpg">
-                                    </b>
-                                    <b class="">
-                                        <img width="50" height="50" class="detail_main_pic_class"
-                                            alt="雷蛇(Razer) 蝰蛇标准版 鼠标 有线鼠标 游戏鼠标 人体工程学 电竞 黑色 6400DPI lol吃鸡神器cf"
-                                            src="img/sp1.jpg">
-                                    </b>
+                                   
                                 </div>
                             </div>
                             <a href="" class="cBtn next iconDetail" title="下一个"> ></a>
                             <!-- 放大部分 -->
-                            <div class="J_zoom" id="J_zoom" style="display: none;">
-                                <img src="img/fangdap.jpg">
+                            <div class="J_zoom" id="J_zoom">
+                                <img src="" style="width:600px;height:600px;">
                             </div>
                             <!-- 大图下边结束 -->
                 </div>
@@ -215,7 +205,7 @@
                 <a href="" target="_blank" class="timebox">
                     <img src="img/time.jpg" alt=""></img>
                 </a>
-                <span class="start_time" style="display: inline;">
+                <!-- <span class="start_time" style="display: inline;">
                     <b>2019</b>
                     年
                     <b>10</b>
@@ -226,7 +216,7 @@
                     :
                     <b>00</b>
                     开始
-                </span>
+                </span> -->
                 <div class="countdown_box none"></div>
             </div>
             <!-- 售价 -->
@@ -236,7 +226,7 @@
                         价格
                     </li>
                     <li class="number">
-                        <span id="current_price">¥149</span>
+                        <!-- <span id="current_price">¥149</span> -->
                     </li>
                     <li class="pricing"></li>
                 </ul>
@@ -261,7 +251,7 @@
                 </li>
             </ul>
             <!-- 样式选择 -->
-            <div class="choose">
+            <!-- <div class="choose">
                 <div class="dt">选择颜色：</div>
                 <div class="dd">
                     <div class="selected" title="6400dpi 标准版黑色（旗舰）">
@@ -281,7 +271,7 @@
                             </a>
                         </div>
                     </div>
-            </div>
+            </div> -->
             
             <!-- 数量与加入购车按钮 -->
             <div class="num-btn">
@@ -310,6 +300,10 @@
             </div>
 
         </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" defer async="true"
+        data-main="./script/index.js"></script>
 </body>
 
 </html>

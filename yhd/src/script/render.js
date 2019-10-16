@@ -1,9 +1,7 @@
 require(['config'], function () {
     require(['jquery'], function () {
-
-
         index_render();
-
+        
     });
 });
 function index_render() {
@@ -36,8 +34,14 @@ function index_render() {
         data: {
             num: 4
         }
+    }),$.ajax({
+        url: phpurl + 'index1.php',
+        dataType: 'json',
+        data: {
+            num: 5
+        }
     })
-    ).done(function (type, list, rank,liushi) {
+    ).done(function (type, list, rank,liushi,lunbo) {
         let typehtml = '';
         let lt = '';
         let rk = '';
@@ -55,33 +59,33 @@ function index_render() {
                 <p class="import_tit">${list[0][0].smalltitle}</p>
                 <p class="voucher_tit">${list[0][0].price}</p>
                 <div class="buy_btn">点击进入</div>
-                <img src="${list[0][0].url}">
+                <img class="lazy" src="${list[0][0].url}">
             </a>
             <a href="" target="_blank" class="bursting" style="border-right:1px solid #f6f6f6">
                 <p class="burting_font burting_font_color specil">${list[0][1].smalltitle}</p>
                 <p class="bkzj">${list[0][1].price}</p>
-                <img src="${list[0][1].url}">
+                <img class="lazy" src="${list[0][1].url}">
             </a>
             <a href="" target="_blank" class="bursting">
                 <p class="burting_font burting_font_color"${list[0][2].smalltitle}</p>
                 <p class="bkzj">${list[0][2].price}</p>
-                <img src="${list[0][2].url}">
+                <img class="lazy" src="${list[0][2].url}">
             </a>
             <a href="" target="_blank" class="bursting " style="border-right:1px solid #f6f6f6;">
                 <p class="burting_font burting_font_color">${list[0][3].smalltitle}</p>
                 <p class="bkzj">${list[0][3].price}</p>
-                <img src="${list[0][3].url}">
+                <img class="lazy" src="${list[0][3].url}">
             </a>
             <a href="" target="_blank" class="bursting">
                 <p class="burting_font burting_font_color">${list[0][4].smalltitle}</p>
                 <p class="bkzj">${list[0][4].price}</p>
-                <img src="${list[0][4].url}">
+                <img class="lazy" src="${list[0][4].url}">
             </a>
             <a href="" target="_blank" class="import_snacks">
                 <p class="import_tit">${list[0][5].smalltitle}}</p>
                 <p class="voucher_tit">${list[0][5].price}</p>
                 <div class="buy_btn">点击进入</div>
-                <img src="${list[0][5].url}">
+                <img class="lazy" src="${list[0][5].url}">
             </a>
         `
         $qua_show_con_right.html(lt);
@@ -91,7 +95,7 @@ function index_render() {
         <a href="" target="_blank">
             <li class="qua_top_imgCon">
                 <div class="qua_imgCon_font" style="background:url(${value.top});">TOP${value.sid}</div>
-                <img src="${value.url}" title="${value.text}">
+                <img class="lazy" src="${value.url}" title="${value.text}">
             </li>
         </a> 
         `
@@ -125,6 +129,35 @@ function index_render() {
         `
         }
         $under_sp_list.html(ls);
+
+        const $lunbo_pic = $('.lunbo-ul');
+        let lb_pic = '';
+        for(let value of lunbo[0]){
+            lb_pic +=`
+        <li class="lunbo-li">
+            <a href="" class="lunbo-a">
+                <img src="${value.url}" class="lunbo-img">
+            </a>
+        </li>
+        `
+        }
+         $lunbo_pic.html(lb_pic);
+
+         const $lunbo_btn = $('.lunbo-tab-ul');
+         let lb_btn ='';
+         
+            lb_btn +=`
+                <li class="lunbo-tab-up colorblack">${lunbo[0][0].name}</li>
+                <li class="lunbo-tab-up">${lunbo[0][1].name}</li>
+                <li class="lunbo-tab-up">${lunbo[0][2].name}</li>
+                <li class="lunbo-tab-up">${lunbo[0][3].name}</li>
+        `
+        
+        $lunbo_btn.html(lb_btn)
+
+       
+
+
 
        
     })

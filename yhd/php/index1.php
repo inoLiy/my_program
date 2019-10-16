@@ -31,4 +31,12 @@ if($num == 1){
     $yhddata[$i]=$result->fetch_assoc();
     };
     echo json_encode($yhddata);
+}else if($num==5){
+    $result = $conn->query("select * from lunbo");
+    $yhddata = array();
+    for($i = 0;$i<4;$i++){
+    $yhddata[$i]=$result->fetch_assoc();
+    };
+    echo json_encode($yhddata);
 }
+
