@@ -110,10 +110,9 @@ function index_render() {
                     src="${value.url}"
                     alt="">
             </div>
-            <p class="single_tit text_limit_limp">${value.type}</p>
+            <p class="single_tit text_limit_limp">${value.title}</p>
             <p class="single_money">￥<span>${value.price}</span></p>
-            <div class="pro_tag clearfix"></div>
-            
+            <div class="pro_tag clearfix"></div> 
             <div class="sing_btn_con">
                 <div class="sin_hove_btn sin_gw">
                     <a class="sin_hove_btn_a item-cart" data-addproduct="51291942655,1">
@@ -124,12 +123,13 @@ function index_render() {
                     <a href="" target="_blank"class="sin_hove_btn_a">找相似</a>
                 </div>
             </div>
-            <a class="border_line" href="" target="_blank"></a>
+            <a class="border_line" href="http://10.31.155.77/work/my_program/yhd/src/details.html?sid=${value.sid}" target="_blank"></a>
         </li>
         `
         }
         $under_sp_list.html(ls);
 
+        
         const $lunbo_pic = $('.lunbo-ul');
         let lb_pic = '';
         for(let value of lunbo[0]){
@@ -153,7 +153,7 @@ function index_render() {
                 <li class="lunbo-tab-up">${lunbo[0][3].name}</li>
         `
         
-        $lunbo_btn.html(lb_btn)
+        $lunbo_btn.html(lb_btn);
 
        
 

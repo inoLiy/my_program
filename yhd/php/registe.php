@@ -21,4 +21,12 @@ if(isset($_POST['phone'])){
     }
 }
 
+if(isset($_POST['mingzi'])){
+    $name = @$_POST['mingzi'];//@容错
+    $phone = @$_POST['shouji'];//@容错
+    $password = sha1(@$_POST['mima']);
+    $result = $conn->query("insert registe(name,phone,password) VALUES('$name','$phone','$password')");
+    echo 1;
+}
+
 

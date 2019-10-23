@@ -2,6 +2,8 @@
 
 include "conn.php";
 $num =$_GET['num'];
+if(isset($num)){
+
 
 if($num == 1){
     $result = $conn->query("select * from type");
@@ -25,7 +27,7 @@ if($num == 1){
     };
     echo json_encode($yhddata);
 }else if($num==4){
-    $result = $conn->query("select * from liushi");
+    $result = $conn->query("select * from details");
     $yhddata = array();
     for($i = 0;$i<31;$i++){
     $yhddata[$i]=$result->fetch_assoc();
@@ -39,4 +41,6 @@ if($num == 1){
     };
     echo json_encode($yhddata);
 }
-
+}else{
+    exit("非法操作");
+}

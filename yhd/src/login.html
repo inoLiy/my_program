@@ -7,8 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/registe.css">
     <link rel="stylesheet" href="css/login.css">
+    <style>
+         @font-face {
+            font-family: "iconfont";
+            src: url('iconfont/iconfont.woff?e829f75?t=02211762577') format('woff');
+            src: url('iconfont/iconfont 2.woff') format('woff');
+
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +24,7 @@
     <div class="regist_header">
         <div class="wrap">
             <!-- 头部左边logo -->
-            <a href="http://www.yhd.com" class="logo">
+            <a href="index1.html" class="logo">
                 <img src="https://passport.yhd.com/front-passport/passport/images/loginlogo.jpg" height="55" alt="1号店">
             </a>
             <!-- 头部右边 -->
@@ -40,7 +48,7 @@
                 <!-- 登录 -->
                 <span class="fr">
                     您好，欢迎光临1号店！
-                    <a href="/passport/login_input.do" class="blue_link">
+                    <a href="javascript:;" class="blue_link">
                         请登录
                     </a>
                 </span>
@@ -60,7 +68,7 @@
                     <!-- 标题 -->
                     <div class="bw">
                         <h3>1号店用户登录</h3>
-                        <a href="" class="regist_new">注册新账号</a>
+                        <a href="registe.html" class="regist_new">注册新账号</a>
                     </div>
                     <!-- 账号 -->
                     <div class="login_form">
@@ -118,20 +126,7 @@
                                 </ul>
                                 <a href="javascript:void(0);" class="unfold" title="展开">更多合作网站<i></i></a>
                             </div>
-                            <!-- <ul class="more_landing clearfix">
-                                <li style="display: none;"><a href="https://passport.yhd.com/alipay/login.do"
-                                        target="_blank"><i class="iconfont alipay"></i>支付宝</a></li>
-                                <li style="display: none;"><a href="https://passport.yhd.com/netease/login.do"
-                                        target="_blank"><i class="iconfont wangyi"></i>网易</a></li>
-                                <li style="display: none;"><a href="https://passport.yhd.com/baidu/login.do"
-                                        target="_blank"><i class="iconfont baidu"></i>百度</a></li>
-                                <li style="display: none;"><a href="https://passport.yhd.com/renren/login.do"
-                                        target="_blank"><i class="iconfont renren"></i>人人网</a></li>
-                                <li style="display: none;"><a href="https://passport.yhd.com/wanlitong/login.do"
-                                        target="_blank"><i class="iconfont pingan"></i>平安万里通</a></li>
-                                <li style="display: none;"><a href="https://passport.yhd.com/mogujie/login.do"
-                                        target="_blank"><i class="iconfont mogujie"></i>蘑菇街</a></li>
-                            </ul> -->
+                           
                         </div>
                         
                     </div>
@@ -146,6 +141,13 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+        id="current-page"
+        target-module="script/login_effect.js"
+        defer async="true"
+        data-main="./script/config.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

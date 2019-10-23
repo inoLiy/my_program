@@ -22,7 +22,10 @@ require(['config'], function () {
 
                 this.$em = $('.strong em');
                 this.$regist_tips_keywords = $('.regist_tips_keywords');
+                this.$em_words = $('.em_words');
 
+                this.$agreement_btn = $('.agreement_btn');
+                
             }
 
             init() {
@@ -30,7 +33,13 @@ require(['config'], function () {
                 let _this = this;
                 let phone_yz = false;
                 let s1 = 0, s2 = 0, s3 = 0, sum = 0;
-               
+
+                let username =false;
+                let phone = false;
+                let yzm = false;
+                let mima = false;
+                let repeat = false;
+
                 this.$same_input.on('focus', function () {
                     let len = _this.$same_label.eq($(this).index('.same_input')).html().length;
                     _this.$same_label.eq($(this).index('.same_input')).animate({
@@ -40,6 +49,7 @@ require(['config'], function () {
 
                 //用户名
                 this.$same_input.eq(0).on('focus', function () {
+
                     $(_this.$regist_right.eq(0)).css({
                         "display": "none"
                     });
@@ -79,6 +89,7 @@ require(['config'], function () {
                         $(_this.$regist_tips.eq(0)).animate({
                             top: 6
                         });
+                        username = false;
                     } else if (reg1.test($(this).val())) {
                         $(_this.$same_item.eq(0)).css({
                             "border-color": "red"
@@ -87,6 +98,7 @@ require(['config'], function () {
                         $(_this.$regist_tips.eq(0)).animate({
                             top: -5
                         });
+                        username = false;
                     } else {
                         if (reg2.test($(this).val())) {
                             $.ajax({
@@ -106,6 +118,7 @@ require(['config'], function () {
                                     $(_this.$regist_tips.eq(0)).animate({
                                         top: 6
                                     });
+                                    username = false;
                                 } else {
                                     $(_this.$regist_tips.eq(0)).css({
                                         "opacity": "0"
@@ -113,6 +126,7 @@ require(['config'], function () {
                                     $(_this.$regist_right.eq(0)).css({
                                         "display": "block"
                                     });
+                                    username = true;
                                 }
                             })
                         } else {
@@ -129,7 +143,7 @@ require(['config'], function () {
 
                 });
 
-                //手机号和验证码
+                //手机号
                 this.$same_input.eq(1).on('focus', function () {
                     $(_this.$regist_right.eq(1)).css({
                         "display": "none"
@@ -181,6 +195,7 @@ require(['config'], function () {
                         $(_this.$regist_tips.eq(1)).animate({
                             top: 6
                         });
+                        phone = false;
                         phone_yz = false;
                     } else if (reg.test($(this).val())) {
                         $.ajax({
@@ -215,13 +230,12 @@ require(['config'], function () {
                                 });
                                 phone_yz = true;
 
-                                //验证码
+                                phone = true;
 
 
 
                             }
                         })
-
 
                     } else {
                         $(_this.$same_item.eq(1)).css({
@@ -231,19 +245,33 @@ require(['config'], function () {
                         $(_this.$regist_tips.eq(1)).animate({
                             top: -5
                         });
-                        phone_yz = false
+                        phone = false;
+                        phone_yz = false;
                     }
 
 
 
 
                 });
-                _this.$a_btn.on('click', function () {
-                    if(phone_yz){
+
+                //验证码
+                this.$a_btn.on('click', function () {
+                    if (phone_yz) {
                         $(this).html(yz());
+                        
+                    }else{
+                        yzm = false;
                     }
-                    
-                })
+                });
+                this.$same_input.eq(2).on('blur', function () {
+                    if (_this.$same_input.eq(2).val()==_this.$a_btn.html()){
+                        yzm = true;
+                        
+                    }else{
+                        yzm = false;
+                        
+                    }
+                }); 
                 //随机数函数
                 function random(min, max) {
                     return parseInt(Math.random() * (max - min + 1)) + min;
@@ -308,6 +336,7 @@ require(['config'], function () {
                     }).animate({
                         top: -5
                     });
+
                 });
                 this.$same_input.eq(3).on('input', function () {
                     let reg1 = /[0-9]/g;
@@ -335,7 +364,6 @@ require(['config'], function () {
                         s3 = 0;
                     }
                     sum = s1 + s2 + s3;
-                    console.log(sum)
                     switch (sum) {
                         case 1:
                             $(_this.$em).css({
@@ -344,7 +372,8 @@ require(['config'], function () {
                             $(_this.$em.eq(0)).css({
                                 "background-color": "red"
                             });
-                            console.log('a')
+                            $(_this.$em_words).html('低');
+
                             break;
                         case 2:
                             $(_this.$em).css({
@@ -356,25 +385,34 @@ require(['config'], function () {
                             $(_this.$em.eq(1)).css({
                                 "background-color": "orange"
                             });
-                            console.log('b')
+                            $(_this.$em_words).html('中');
+
                             break;
                         case 3:
                             $(_this.$em).css({
                                 "background-color": "green"
                             });
-                            console.log('c')
+                            $(_this.$em_words).html('强')
+
                     }
 
 
                 });
                 this.$same_input.eq(3).on('blur', function () {
-                    let reg = /^\s\d{6,20}$/g;
+                    let reg = /^\S{6,20}$/g;
                     $(_this.$regtip_rel.eq(3)).css({
                         "background": "#fff4d7"
                     });//框背景色
                     $(_this.$i.eq(3)).css({
                         "border-right-color": "#fff4d7"
                     })//小三角颜色
+
+                    $(_this.$regist_tips.eq(3)).css({
+                        "opacity": "1"
+                    });
+                    $(_this.$regist_tips_keywords).css({
+                        "display": "none"
+                    });
 
                     if ($(this).val() == '') {
                         $(_this.$same_item.eq(3)).css({
@@ -384,39 +422,152 @@ require(['config'], function () {
                         $(_this.$regist_tips.eq(3)).animate({
                             top: 6
                         });
+                        mima = false;
 
-                    } else if (reg.test($(this).val())) {
-                        $.ajax({
-                            type: 'post',
-                            url: 'http://10.31.155.77/work/my_program/yhd/php/registe.php',
-                            async: 'true',
-                            data: {
-                                phone: $(this).val()
+                    } else {
+                        if (reg.test($(this).val())) {
+                            if (sum == 1) {
+                                $(_this.$same_item.eq(3)).css({
+                                    "border-color": "red"
+                                });
+                                $(_this.$tips_words.eq(3)).html(`不能全为数字、全为字母或全为特殊符号`);
+                                $(_this.$regist_tips.eq(3)).animate({
+                                    top: -5
+                                });
+                                mima = false;
+                            } else {
+                                $(_this.$regist_tips.eq(3)).css({
+                                    "opacity": "0"
+                                });
+                                $(_this.$same_item.eq(3)).css({
+                                    "border-color": "e4e4e4"
+                                });
+                                $(_this.$regist_right.eq(3)).css({
+                                    "display": "block"
+                                });
+                                mima = true;
+                              
                             }
-                        })
+
+                        } else {
+                            $(_this.$same_item.eq(3)).css({
+                                "border-color": "red"
+                            });
+                            $(_this.$tips_words.eq(3)).html(`密码应为6-20位字符`);
+                            $(_this.$regist_tips.eq(3)).animate({
+                                top: 6
+                            });
+                            mima = false;
+                        }
+
                     }
 
 
-
-
-
-
-
                 });
+
+                //确认密码
+                console.log(this.$regist_right.length)
+                this.$same_input.eq(4).on('focus',function(){
+                    $(_this.$regist_right.eq(2)).css({
+                        "display": "none"
+                    });
+                    $(_this.$same_item.eq(4)).css({
+                        "border-color": "#dedede"
+                    });
+
+                    $(_this.$regtip_rel.eq(5)).css({
+                        "background": "#e4e4e4"
+                    });
+                    $(_this.$i.eq(5)).css({
+                        "border-right-color": "#e4e4e4"
+                    })
+                    $(_this.$tips_words.eq(5)).html(`请再次输入密码`);
+                    $(_this.$regist_tips.eq(4)).css({
+                        "opacity": "1"
+                    }).animate({
+                        top: 6
+                    });
+                });
+                this.$same_input.eq(4).on('input', function () {
+                    if($(this).val()==$(_this.$same_input.eq(3)).val()){
+                        $(_this.$regist_tips.eq(4)).css({
+                            "opacity": "0"
+                        })
+                    }
+                });
+                this.$same_input.eq(4).on('blur', function () {
+                   
+                    if(mima){
+                        $(_this.$regtip_rel.eq(5)).css({
+                            "background": "#fff4d7"
+                        });//框背景色
+                        $(_this.$i.eq(5)).css({
+                            "border-right-color": "#fff4d7"
+                        })//小三角颜色
+                    
+                    if($(this).val()==''){
+                        repeat = false;
+                        $(_this.$same_item.eq(4)).css({
+                            "border-color": "red"
+                        });
+                    }else{
+                        if ($(this).val() == $(_this.$same_input.eq(3)).val()) {
+                            $(_this.$regist_tips.eq(4)).css({
+                                "opacity": "0"
+                            });
+                            $(_this.$same_item.eq(4)).css({
+                                "border-color": "e4e4e4"
+                            });
+                            $(_this.$regist_right.eq(2)).css({
+                                "display": "block"
+                            });
+                            repeat = true;
+                    }else{
+                        $(_this.$regtip_rel.eq(5)).css({
+                            "background": "#fff4d7"
+                        });//框背景色
+                        $(_this.$i.eq(5)).css({
+                            "border-right-color": "#fff4d7"
+                        })//小三角颜色
+                        $(_this.$same_item.eq(4)).css({
+                            "border-color": "red"
+                        });
+                        
+                        $(_this.$tips_words.eq(5)).html(`重复密码错误`);
+                        $(_this.$regist_tips.eq(4)).animate({
+                            top: 6
+                        });
+                        repeat = false;
+                    }
+                    
+                    }
+                }
+                })
+
+                //提交
+                this.$agreement_btn.on('click',function(){
+                    if(username&&phone&&yzm&&mima&&repeat){
+                        $.ajax({
+                            type:'post',
+                            url:'http://10.31.155.77/work/my_program/yhd/php/registe.php',
+                            data:{
+                                mingzi:_this.$same_input.eq(0).val(),
+                                shouji:_this.$same_input.eq(1).val(),
+                                mima:_this.$same_input.eq(3).val()
+                            }
+                            }).done(function(){
+                                alert('注册成功');
+                                window.location.href = 'http://10.31.155.77/work/my_program/yhd/src/login.html';
+                        })
+                    }else{
+                        alert('信息填写错误');
+                         
+                        }
+                })
+
             }
         }
-        class login {
-            //登录
-            constructor() {
-
-
-            }
-            init() {
-
-
-            }
-        }
+        
         new regiset().init();
-        new login().init();
     });
 });

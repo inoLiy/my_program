@@ -15,7 +15,7 @@
     <div class="regist_header">
         <div class="wrap">
             <!-- 头部左边logo -->
-            <a href="http://www.yhd.com" class="logo">
+            <a href="index1.html" class="logo">
                 <img src="https://passport.yhd.com/front-passport/passport/images/loginlogo.jpg" height="55" alt="1号店">
             </a>
             <!-- 头部右边 -->
@@ -39,7 +39,7 @@
                 <!-- 登录 -->
                 <span class="fr">
                     您好，欢迎光临1号店！
-                    <a href="/passport/login_input.do" class="blue_link">
+                    <a href="login.html" class="blue_link">
                         请登录
                     </a>
                 </span>
@@ -145,7 +145,7 @@
                             <span class="same_label">确认密码</span>
                         </div>
 
-                        <div class="regist_tips" style="top: 120px;">
+                        <div class="regist_tips" style="top: 6px;">
                             <div class="regtip_rel">
                                 <i></i>
                                 <div class="tips_words">
@@ -164,7 +164,7 @@
                                 《服务协议及隐私声明》
                             </a>
                         </div>
-                        <a class="agreement_btn" href="#">
+                        <a class="agreement_btn" href="javascript:;">
                             同意协议并注册
                         </a>
                     </li>
@@ -172,7 +172,13 @@
             </div> 
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" defer async="true" data-main="./script/index.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+        id="current-page"
+        target-module="script/registe_effect.js"
+        defer async="true"
+        data-main="./script/config.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

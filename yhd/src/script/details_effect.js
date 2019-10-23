@@ -1,5 +1,59 @@
 require(['config'], function () {
-    require(['jquery','jquery.cookie'], function () {
+    require(['jquery', 'jquery.cookie'], function () {
+        let sid = location.search.slice(1).split('=')[1];
+        const phpurl = 'http://10.31.155.77/work/my_program/yhd/php/'
+        $.ajax({
+            url: phpurl + 'details.php',
+            dataType: 'json',
+            data: {
+                id: sid
+            }
+        }).done(function (details) {
+
+            const $mBox = $('.mBox');
+            const $price = $('.number');
+            const $proImg = $('.proImg');
+
+
+            let dt = '';
+            let ft = '';
+            let sum = '';
+            let prc = '';
+            let img = '';
+
+            img = `
+                    <img id="J_prodImg" width="360" height="360" alt="${details.title}" src="${details.sp.split(',')[0]}"> 
+                    `
+            $proImg.append(img);
+            dt = `
+                        <b class="">
+                            <img width="50" height="50" class="detail_main_pic_class"
+                                alt="${details.title}"
+                        `
+            ft = `</b>`
+            for (let i = 0; i < details.sp.split(',').length; i++) {
+                sum += dt + `
+                            src="${details.sp.split(',')[i]}">
+                        `+ ft;
+
+
+            }
+
+            $mBox.html(sum);
+            prc = `<span id="current_price">￥${details.price}</span>`
+            $price.html(prc);
+        })
+
+
+
+
+
+
+
+
+
+
+
         //放大镜
         const $mBox = $('.mBox');
         const $mask = $('.mask');
@@ -13,7 +67,9 @@ require(['config'], function () {
         const $reduce = $('.act .reduce');
 
         const $buy = $('.buy_btn');
-
+        
+        let id =[];
+        let value = [];
 
 
         //放大镜
@@ -71,7 +127,7 @@ require(['config'], function () {
         })
 
 
-        //加入购物车
+        //数量限制
         $num.on('input', function () {
             let num = $num.val();
             if (num >= 99) {
@@ -107,6 +163,7 @@ require(['config'], function () {
 
 
         })
+        //点击增加
         $add.on('click', function () {
             let num = $num.val();
             if (num >= 99) {
@@ -140,6 +197,7 @@ require(['config'], function () {
             }
 
         })
+        //点击减少
         $reduce.on('click', function () {
             let num = $num.val();
 
@@ -173,12 +231,35 @@ require(['config'], function () {
             }
 
         })
+        //加入购物车
+        $buy.on('click', function () {
+            if ($.cookie('sid')) {
+                id = $.cookie('sid').split(',');
+                value = $.cookie('value').split(',');
+                if(id.indexOf(sid)>=0){
+                    value[id.indexOf(sid)]  = Number(value[id.indexOf(sid)])+Number($num.val());
 
-        $buy.on('click',function(){
-            if($.cookie('sid')){
+                    $.cookie('sid',id,{ expires: 7 });
+                    $.cookie('value',value,{ expires: 7 });
+                    alert('加入成功');
+                }else{
+                    id = $.cookie('sid').split(',');
+                    value = $.cookie('value').split(',');
+                    id.push(sid);
+                    value.push($num.val());
 
-            }else{
-                $.cookie('sid')
+                    $.cookie('sid',id,{ expires: 7 });
+                    $.cookie('value',value,{ expires: 7 });
+                    alert('加入成功');
+                }
+                
+            } else {
+                id.push(sid);
+                value.push($num.val());
+                $.cookie('sid',id,{ expires: 7 });
+                $.cookie('value',value,{ expires: 7 });
+                alert('加入成功');
+                
             }
         })
 

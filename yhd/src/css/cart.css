@@ -2,6 +2,13 @@ body{
     background: url(../img/bg.jpg) no-repeat top center fixed;
     font: 12px Arial,Helvetica,sans-serif;
 }
+.iconfont {
+    font-family: "iconfont-cart" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 .cart_content{
     width: 1200px;
     margin: 0 auto;
@@ -123,7 +130,12 @@ body{
 .cart_list_wrap {
     padding: 0 30px;
 }
-
+li.item{
+    border-bottom: 1px solid #ccc;
+}
+li.item:last-child{
+    border-bottom:none;
+}
 .cart_activity {
     position: relative;
     padding: 0 0 0 35px;
@@ -278,6 +290,10 @@ body{
     float: left;
     width: 75px;
     height: 75px;
+}
+.item_pic img{
+    width: 75px!important;
+    display: inline-block;
 }
 /* 商品名 */
 .cart_prod .item_tit {

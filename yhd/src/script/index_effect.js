@@ -1,5 +1,5 @@
 require(['config'], function () {
-    require(['render', 'jquery'], function () {
+    require(['jquery','jquery.cookie'], function () {
         class index_effect {
             constructor() {
                 this.$shangpinlou = $('.shangpinlou');
@@ -12,6 +12,8 @@ require(['config'], function () {
                 this.$lunbo_btn = $('.lunbo-tab-ul');
                 this.$list = $('.under_sp_list');
 
+                this.$log = $('.log');
+                this.$reg = $('.reg');
 
 
             }
@@ -66,15 +68,22 @@ require(['config'], function () {
                         scrollTop: 0
                     })
                 })
-                //懒加载
+
+
+
+                // 懒加载
                 // $(document).ready(function ($) { //页面加载完成
                 //     $('img.lazy').lazyload({
                 //         effect: "fadeIn" //效果方式
                 //     });
                 // });
+
+
+
+
+
+
                 //轮播图
-
-
                 var index=0;
                 _this.$lunbo_btn.on('click', function (ev) {
                     
@@ -82,35 +91,53 @@ require(['config'], function () {
                          index = $(ev.target).index();
                         $(ev.target).addClass('colorblack').siblings().removeClass('colorblack');
                         
-                        $('.lunbo-ul li').eq($(ev.target).index()).animate({
+                        $('.lunbo-ul li').eq($(ev.target).index()).stop(true,true).animate({
                             opacity: 1
-                        },500).siblings().animate({
+                        },200).siblings().stop(true,true).animate({
                             opacity: 0
-                        },500)
+                        },200)
                     }
                     
-                })
-                 
-                
-             setInterval(function(){
+                })              
+                setInterval(function(){
                     if(index>3){
                         index = 0;
                     }
-                    console.log(index)
                     $('.lunbo-tab-ul li').eq(index).addClass('colorblack').siblings().removeClass('colorblack');
                         
-                        $('.lunbo-ul li').eq(index).animate({
+                        $('.lunbo-ul li').eq(index).stop(true).animate({
                             opacity: 1
-                        },500).siblings().animate({
+                        },200).siblings().stop(true).animate({
                             opacity: 0
-                        },500)
+                        },200)
                     index++;
                 },1500)
-
-
                 this.$list.on('click',function(ev){
                     if($(ev.target).nodeName=='LI'){
                         let index = $(ev.target)
+                    }
+                })
+
+                
+
+                //登录
+                if($.cookie('name')){
+                    this.$log.html($.cookie('name'));
+                    this.$log.attr('href','javascript:;');
+                    this.$reg.html('|&nbsp;退出');
+                    this.$reg.attr('href','javascript:;');
+                }else{
+                    this.$log.html($.cookie('登录&nbsp;'));
+                    this.$reg.html('&nbsp;注册');
+                    this.$log.attr('href','http://10.31.155.77/work/my_program/yhd/src/login.html');
+                    this.$reg.attr('href','http://10.31.155.77/work/my_program/yhd/src/registe.html');
+                }
+                this.$reg.on('click',function(){
+                    if(_this.$reg.html()=='|&nbsp;退出'){
+
+                        $.cookie('name','a',{expires: -1});
+                        window.location.href='http://10.31.155.77/work/my_program/yhd/src/index1.html'
+                        this.$reg.attr('href','http://10.31.155.77/work/my_program/yhd/src/resigte.html');
                     }
                 })
             }

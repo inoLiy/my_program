@@ -3,6 +3,16 @@ body {
     background: #fcfcfc;
 }
 
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale;
+    color: #ccc;
+}
 /* 登录部分 */
 
 .login_wrap {

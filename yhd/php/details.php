@@ -2,9 +2,13 @@
 
 include "conn.php";
 // $num = $_GET[""]
-$result = $conn->query("select * from details");
-    $details = array();
-    for($i = 0;$i<$result->num_rows;$i++){
-    $details[$i]=$result->fetch_assoc();
-    };
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $result = $conn->query("select * from details where sid=$id");
+    $details = $result->fetch_assoc();
     echo json_encode($details);
+    
+    
+}else{
+    exit('非法操作');
+}
